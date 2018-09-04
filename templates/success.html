@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/styles.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class='header'>
+        <p class='para'>Coding Dojo</p>
+        {% for name in db_name %}
+            <p class='para2'>Welcome {{ name['first_name'] }} {{ name['last_name'] }}</p>
+        {% endfor %}
+        <a href="/{{ session['user_id'] }}/logout" class='logout'>Logout</a>
+        </div>
+        
+        <div>
+        <form action="/{{ session['user_id'] }}/message" method='POST'>
+            <h3>Post a Message</h3>
+            <textarea name="message" id="" cols="90" rows="10"></textarea> {{ empty_message }}<br><br>
+            <input type="submit" value='Post a Message' class='button'>
+        </form>
+        <br><br>
+        </div>
+        <div>
+            {% for user in user_data %}
+                <div>
+                    <div class='message'>{{ user['first_name'] }} {{ user['last_name'] }} - {{ user['created_at'] }}</div>
+                        <div class='container'>
+                            <div class='message_container'><p>{{ user['messages'] }}</p></div> 
+                            {% if session['user_id'] == user['user_id'] %}
+                                <a href="/{{ user['id'] }}/{{ session['user_id']}}/delete" class='anchor'>Delete</a>
+                            {% endif %}
+                            <div>
+                                {% if user_comments %}
+                                    {% for comments in user_comments %}
+                                        {% if comments['comment_Message_id'] == user['id'] and comments['reg_id']==comments['User_id'] %}
+                                            <div class='message'>{{ comments['First']}} {{ comments['Last']}} - {{ comments['Created_at'] }}</div>
+                                            <div>
+                                                {{ comments['Comments'] }}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <form action="/{{ session['user_id'] }}/{{ user['id'] }}/comment" method='POST'>
+                                    <div>
+                                    <h3>Post a Comment</h3>
+                                    <textarea name="comments"  cols="80" rows="10"></textarea>{{ empty_comment }}<br><br>
+                                    <input type="submit" value='Post a comment' class='button2'>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

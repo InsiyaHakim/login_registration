@@ -1,0 +1,53 @@
+.button{
+    margin-left: 545px;
+    background-color: #5050da;
+    color: white;
+    padding: 10px;
+}
+.button2{
+    margin-left: 476px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+}
+.message{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+
+}
+.container{
+    margin-left: 53px;
+    display: inline-block;
+
+}
+.anchor{
+    text-decoration: none;
+    background-color: #ed1919;
+    padding: 10px;
+    margin-left: 37px;
+    border: 2px solid #c4bcbc;
+    color: white;
+}
+.message_container{
+    width: 490px;
+    word-wrap: break-word;
+    display: inline-block;
+}
+.para{
+    display: inline-block;
+    font-size: 30px;
+}
+.logout{
+    margin-left: 82px;
+    font-size: 20px;
+}
+.header{
+    border-bottom: 2px solid black;
+}
+.para2{
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 544px;
+
+}

@@ -1,0 +1,16 @@
+SELECT film.title, film.description, film.release_year, film.rating, film.special_features
+FROM film
+	JOIN film_actor ON film.film_id = film_actor.film_id
+	JOIN actor ON film_actor.actor_id = actor.actor_id
+WHERE film.rating = 'G'
+	AND film.special_features LIKE '%behind the scenes%'
+	AND actor.actor_id = 15;
+
+	
+	
+	SELECT customer.first_name, customer.last_name, customer.email, address.address FROM customer
+	JOIN address ON address.address_id = customer.address_id
+	WHERE customer.store_id = 1 AND address.city_id = 1
+	OR customer.store_id = 1 AND address.city_id = 42
+	OR customer.store_id = 1 AND address.city_id = 312
+	OR customer.store_id = 1 AND address.city_id = 459;
